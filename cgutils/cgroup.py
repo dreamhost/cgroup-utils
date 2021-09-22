@@ -886,14 +886,14 @@ class EventListener:
             line = "%d %d %s\0" % (self.event_fd, self.target_fd, threshold)
         else:
             line = "%d %d\0" % (self.event_fd, self.target_fd)
-        os.write(self.ec_fd, line)
+        os.write(self.ec_fd, str.encode(line))
 
     def wait(self):
         """
         It returns when an event which we have configured by set_threshold happens.
         Note that it blocks until then.
         """
-        ret = os.read(self.event_fd, 64 / 8)
+        ret = os.read(self.event_fd, 8)
         return struct.unpack('Q', ret)
 
 
