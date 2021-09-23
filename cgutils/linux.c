@@ -114,7 +114,7 @@ PyObject *
 #else
 PyMODINIT_FUNC
 #endif
-initlinux(void)
+PyInit_linux(void)
 {
 	PyObject *module, *dict;
 	PyObject *val;
