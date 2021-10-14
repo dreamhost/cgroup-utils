@@ -894,6 +894,7 @@ class EventListener:
         Note that it blocks until then.
         """
         ret = os.read(self.event_fd, 8)
+        os.close(self.event_fd)
         return struct.unpack('Q', ret)
 
 
